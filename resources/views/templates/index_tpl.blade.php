@@ -102,7 +102,7 @@ $cateProducts = Cache::get('cateProducts');
 						<div class="col-md-3 col-sm-6 col-xs-6 pro-loop">
 							<div class="product-block product-resize">
 								<div class="product-img image-resize view view-third">
-									<a href="detail.html" title="Xe đẩy Geoby">
+									<a href="{{url('san-pham/'.$newProduct->alias.'.html')}}" title="Xe đẩy Geoby">
 										<img class="first-image  has-img" alt=" {{$newProduct->name}} " src="{{asset('upload/product/'.$newProduct->photo)}}"  />
 										<?php @$image = DB::table('images')->where('product_id', $newProduct->id)->orderBy('id','asc')->first(); ?>			
 										<img  class ="second-image" src="{{asset('upload/hasp/'.$image->photo)}}"  alt=" {{$newProduct->name}} " />
@@ -114,7 +114,7 @@ $cateProducts = Cache::get('cateProducts');
 											</a>
 										</div>
 										<div class="view-details">
-											<a href="detail.html" class="view-detail" > 
+											<a href="{{url('san-pham/'.$newProduct->alias.'.html')}}" class="view-detail" > 
 												<span><i class="fa fa-clone"> </i></span>
 											</a>
 										</div>

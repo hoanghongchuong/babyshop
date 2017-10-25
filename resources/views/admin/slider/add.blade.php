@@ -52,10 +52,10 @@
 				      	<label for="alias">Link liên kết</label>
 				      	<input type="text" name="txtLink" id="txtLink" value=""  class="form-control" />
 					</div>
-					<!-- <div class="form-group">
+					<div class="form-group">
 				      	<label for="desc">Mô tả</label>
 				      	<textarea name="txtDesc" rows="5" class="form-control"></textarea>
-					</div> -->
+					</div>
 
 					<input type="hidden" name="txtCom" value="{{ @$_GET['type'] }}"/>
 				</div>
