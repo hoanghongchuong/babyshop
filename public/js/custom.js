@@ -1,34 +1,38 @@
-// jQuery(document).ready(function($) {
-// 	$('.sort-by').change(function(event) {
-// 		var a = $(this).val();
-// 		var url = window.location.href;
-// 		window.location.href = url + '?'+ a;
-// 	});
+jQuery(document).ready(function($) {
+	$('.sort-by').change(function(event) {
 
+        var queryOject = getQueryObject();
+        var sortType = $(this).val();
+        queryOject.query.sort = sortType;
+        refreshUrl(queryOject)
+	});
 
+    window.getQueryObject = function() {
+        var urlArray = window.location.href.split('?');
+        var result = {
+            origin: urlArray[0],
+            query: {}
+        };
+        if (urlArray.length == 1) {
+            return result;
+        }
+        var queryArray = urlArray[1].split('&');
 
-// });
-$(document).ready(function(){
-    $('.addCart').click(function(){
-        var id = $('.product_id').val();
-        alert(id);
-        var qtt =1;
-        $.ajax({
-            url: window.urlAddCart,
-            type: 'POST',
-            cache: false,
-            data: {
-                qtt:qtt,
-                id:id,
-                _token: window.token
-            },
-            success: function(res){
-                console.log(res);
-                if(res){
-                    alert('Sản phẩm đã được thêm vào giỏ hàng')
-                }
-                
+        for (var i = 0; i < queryArray.length; i++) {
+            var item = queryArray[i].split('=');
+            if (item.length != 0) {
+                result.query[item[0]] = item[1] ? item[1] : '';
             }
-        });
-    });
+        }
+        return result;
+    }
+
+    window.refreshUrl = function(queryObject) {
+        queryObject.origin += '?';
+        for (var i in queryObject.query) {
+            queryObject.origin += i + '=' + queryObject.query[i] + '&';
+        }
+        window.location.href = queryObject.origin.replace(/.$/,"");
+    }
+
 });

@@ -43,7 +43,7 @@
                 
                 
                 <div class="sort-filter-option js-promoteTooltip" >
-                    <div class="filterBtn txtLeft showOverlay" >
+                    <!-- <div class="filterBtn txtLeft showOverlay" >
                         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
                         <span  class="custom-dropdown custom-dropdown--white">
                             <select class="sort-by custom-dropdown__select custom-dropdown__select--white">
@@ -57,7 +57,7 @@
                                 <option value="best-selling">Bán chạy nhất</option>
                             </select>
                         </span>
-                    </div>
+                    </div> -->
                 </div>
                         
             </div>
@@ -120,7 +120,7 @@
                                 </h1>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="browse-tags">
+                                <!-- <div class="browse-tags">
                                     <span>Sắp xếp theo:</span>
                                     <span  class="custom-dropdown custom-dropdown--white">
                                         <select class="sort-by custom-dropdown__select custom-dropdown__select--white">
@@ -134,7 +134,7 @@
                                             <option value="best-selling">Bán chạy nhất</option>
                                         </select>
                                     </span>
-                                </div>  
+                                </div>  --> 
                             </div>
                         </div>
                     </div>

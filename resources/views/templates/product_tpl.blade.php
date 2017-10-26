@@ -164,13 +164,11 @@
                                     <span>Sắp xếp theo:</span>
                                     <span  class="custom-dropdown custom-dropdown--white">
                                         <select class="sort-by custom-dropdown__select custom-dropdown__select--white">
-                                            <option value="price-ascending">Giá: Tăng dần</option>
-                                            <option value="price-descending">Giá: Giảm dần</option>
-                                            <option value="title-ascending">Tên: A-Z</option>
-                                            <option value="title-descending">Tên: Z-A</option>
-                                            <option value="created-ascending">Cũ nhất</option>
-                                            <option value="created-descending">Mới nhất</option>
-                                            <option value="best-selling">Bán chạy nhất</option>
+                                            <option value="">Sắp xếp</option>
+                                            option
+                                            @foreach($sortType as $type => $value)
+                                            <option value="{{ $type }}" @if($type == $selected) {{"selected"}} @endif >{{ $value['text'] }}</option>
+                                            @endforeach
                                         </select>
                                     </span>
                                 </div>  

@@ -4,6 +4,7 @@
 <?php
 $setting = Cache::get('setting');
 $cateProducts = Cache::get('cateProducts');
+$banner = DB::table('banner_content')->where('position',1)->get();
 ?>
 
 @include('templates.layout.slider')
@@ -75,18 +76,8 @@ $cateProducts = Cache::get('cateProducts');
 									<!--Product loop-->
 
 				<div class="row">
-					<div class="col-lg-12 col-sm-12 col-xs-12">
-						<div class="animation fade-in home-banner-1">
-							<aside class="banner-home-1" >
-								<div class="divcontent"><span class="ad_banner_1">Miễn phí vận chuyển<strong class="ad_banner_2" >Với tất cả đơn hàng trên 500k</strong></span>
-									<span class="ad_banner_desc" >Miễn phí 2 ngày vận chuyển với đơn hàng trên 500k trừ trực tiếp khi thanh toán</span>
-								</div>
-								<div class="divstyle"></div>
-							</aside>
-						</div>	
-					</div>
+					
 				</div>
-
 				<div class="product-list clearfix ">
 					<div class="row">
 						<div class="col-lg-12 col-sm-12 col-xs-12">
@@ -96,7 +87,6 @@ $cateProducts = Cache::get('cateProducts');
 							</aside>
 						</div>
 					</div>
-
 					<div class="row content-product-list products-resize">
 						@foreach($news_product as $newProduct)
 						<div class="col-md-3 col-sm-6 col-xs-6 pro-loop">
@@ -150,23 +140,15 @@ $cateProducts = Cache::get('cateProducts');
 
 				<div class="banner-bottom">
 					<div class="row">
-						
+						@foreach($banner as $qc)
 						<div class="col-xs-12 col-sm-6 home-category-item-2">
 							<div class="block-home-category"> 
-								<a   href="collectionshot-products.html">
-									<img class="b-lazy b-loaded" src="{{asset('public/images/block_home_category1.jpg')}}"  alt="Thời trang nữ">
+								<a   href="{{$qc->link}}">
+									<img class="b-lazy b-loaded" src="{{asset('upload/banner/'.$qc->image)}}"  alt="">
 								</a>			
 							</div>
 						</div>
-						
-						
-						<div class="col-xs-12 col-sm-6 home-category-item-3">
-							<div class="block-home-category">
-								<a   href="collectionshot-products.html">
-									<img class="b-lazy b-loaded" src="{{asset('public/images/block_home_category2.jpg?v=21')}}" alt="Thời trang nam">
-								</a>
-							</div>
-						</div>
+						@endforeach
 						
 					</div>
 				</div>
@@ -175,8 +157,5 @@ $cateProducts = Cache::get('cateProducts');
 		</div>
 </div>
 </section>
-<script>
-    window.urlAddCart = '{{ route("ajaxAddProductToCart") }}';
-    window.token = '{{ csrf_token() }}';
-</script>
+
 @endsection

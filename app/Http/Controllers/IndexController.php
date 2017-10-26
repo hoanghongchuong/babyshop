@@ -16,6 +16,37 @@ use App\District;
 use App\ChiNhanh;
 class IndexController extends Controller {
 	protected $setting = NULL;
+
+	public $sortType = [
+		'price-ascending' => [
+			'text' => 'Giá: Tăng dần',
+			'order' => ['price', 'ASC']
+		],
+		'price-descending' => [
+			'text' => 'Giá: Giảm dần',
+			'order' => ['price', 'DESC']
+		],
+		'title-ascending' => [
+			'text' => 'Tên: A-Z',
+			'order' => ['name', 'ASC']
+		],
+		'title-descending' => [
+			'text' => 'Tên: Z-A',
+			'order' => ['name', 'DESC']
+		],
+		'created-ascending' => [
+			'text' => 'Cũ nhất',
+			'order' => ['created_at', 'ASC']
+		],
+		'created-descending' => [
+			'text' => 'Mới nhất',
+			'order' => ['created_at', 'DESC']
+		],
+		// 'best-selling' => [
+		// 	'text' => 'Bán chạy nhất',
+		// 	'order' => ['noibat', 'ASC']
+		// ]
+	];
 	/*
 	|--------------------------------------------------------------------------
 	| Welcome Controller
@@ -81,26 +112,34 @@ class IndexController extends Controller {
 
 		return view('templates.index_tpl', compact('banner_danhmuc','com','khonggian_list','about','tintuc_moinhat','keyword','description','title','img_share','hot_news','news_product','hot_product','slider','banner_sidebar','cateHots','video','cate_pro'));
 	}
-	public function getProduct()
+	public function getProduct(Request $req)
 	{
 		$cate_pro = DB::table('product_categories')->where('status',1)->where('parent_id',0)->orderby('id','asc')->get();
-		$products = DB::table('products')->select()->where('status',1)->orderby('stt','desc')->paginate(3);
-		
+		$products = DB::table('products')->select()->where('status',1);
+		$appends = [];
+		$selected = $req->sort;
+		if ($req->sort) {
+			if (isset($this->sortType[$req->sort])) {
+				$appends['sort'] = $req->sort;
+				$products = $products->orderBy($this->sortType[$req->sort]['order'][0], $this->sortType[$req->sort]['order'][1]);
+			}
+		}
+		$products = $products->paginate(9);
+		if (count($appends)) {
+			$products = $products->appends($appends);
+		}
 		$tintucs = DB::table('news')->where('com','tin-tuc')->orderBy('id','desc')->take(3)->get();
-		// dd($product_cate);
-		// $banner_danhmuc = DB::table('lienket')->select()->where('status',1)->where('com','chuyen-muc')->where('link','san-pham')->get()->first();
-		// $camnhan_khachhang = DB::table('lienket')->select()->where('status',1)->where('com','cam-nhan')->orderby('stt','asc')->get();
-		// $doitac = DB::table('lienket')->select()->where('status',1)->where('com','doi-tac')->orderby('stt','asc')->get();
 		$setting = Cache::get('setting');
 		$com='san-pham';
 		
-			$title = "Sản phẩm";
-			$keyword = "Sản phẩm";
-			$description = "Sản phẩm";
+		$title = "Sản phẩm";
+		$keyword = "Sản phẩm";
+		$description = "Sản phẩm";
 		// $img_share = asset('upload/hinhanh/'.$banner_danhmuc->photo);
 		
 		// return view('templates.product_tpl', compact('product','banner_danhmuc','doitac','camnhan_khachhang','keyword','description','title','img_share'));
-			return view('templates.product_tpl', compact('title','keyword','description','products', 'com','cate_pro','tintucs'));
+		view()->share(['sortType' => $this->sortType]);
+		return view('templates.product_tpl', compact('title','keyword','description','products', 'com','cate_pro','tintucs','selected'));
 	}
 
 	public function getProductList($id)
@@ -706,30 +745,9 @@ class IndexController extends Controller {
     	$cate_pro = DB::table('product_categories')->where('status',1)->where('parent_id',0)->orderby('id','asc')->get();
     	$categoryDetail = ProductCate::select('name','alias','id','parent_id')->where('alias', $alias)->first();
     	$products = $categoryDetail->products;
+
     	return view('templates.cateproduct_tpl', compact('categoryDetail','cate_pro','products'));
     }
 
-    public function ajaxAddCart(Request $req)
-	{
-		// $data = $req->only('product_id');
-		dd($req->id);
-		try {
-			$product = DB::table('products')->select()->where('status',1)->where('id',$req->id)->get();
-			if (!$product) {
-				die('product not found');
-			}
-			Cart::add(array(
-					'id'=>$product->id,
-					'name'=>$product->name,
-					'qty'=>1,
-					'price'=>$product->price,
-					'options'=>array('photo'=>$product->photo,'code'=>$product->code)));
-			return 1;
-		} catch (\Exception $e) {
-			return 0;
-		}
-		
-		// return redirect(route('getCart'));
-	}
-
+    
 }

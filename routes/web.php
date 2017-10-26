@@ -49,17 +49,16 @@ Route::get('logout','LoginController@logout');
 Route::get('gio-hang',['as'=>'getCart', 'uses'=>'IndexController@getCart']);
 Route::post('cart/add', ['as' => 'addProductToCart', 'uses' => 'IndexController@addCart']);
 
-Route::post('ajax/cart/add', ['as' => 'ajaxAddProductToCart', 'uses' => 'IndexController@ajaxAddCart']);
 
 Route::post('cart/update',['as' => 'updateCart', 'uses' => 'IndexController@updateCart']);
 // Route::get('updatecart/{id}/{qty}',['as'=>'updatecart','uses'=>'IndexController@updatecart']);
 Route::get('xoa-gio-hang/{id}','IndexController@deleteCart');
 Route::post('gui-don-hang', ['as' =>'postOrder', 'uses'=> 'IndexController@postOrder']);
 Route::get('xoa-all','IndexController@deleteAllCart')->name('deleteCart');
-
 Route::get('dich-vu',['as'=>'getDichvu', 'uses'=>'IndexController@getDichvu']);
-
 Route::post('card/check',['as'=>'checkCard', 'uses'=>'IndexController@checkCard']);
+
+
 
 Route::get('dich-vu/{id}',['as'=>'getDichVuList', 'uses'=>'IndexController@getDichVuList']);
 Route::get('chi-tiet-dich-vu/{id}.html',['as'=>'getDichVuDetail', 'uses'=>'IndexController@getDichVuDetail']);

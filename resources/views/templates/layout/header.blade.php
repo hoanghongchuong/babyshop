@@ -42,7 +42,7 @@
                         <nav id="subnav">
                             <ul>
                                 <li>
-                                    <a href="tel:0134647979"><i class="fa fa-phone" aria-hidden="true"></i>0134.647.979</a>
+                                    <a href="tel:0134647979"><i class="fa fa-phone" aria-hidden="true"></i>{{$setting->phone}}</a>
                                 </li>
                                 <!-- <li><a class="reg" href="register.html" title="Đăng ký">ĐĂNG KÝ</a></li>
                                 <li><a class="log" href="login.html" title="Đăng nhập">Đăng nhập</a></li> -->
