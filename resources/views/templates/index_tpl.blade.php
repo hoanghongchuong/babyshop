@@ -38,16 +38,16 @@ $cateProducts = Cache::get('cateProducts');
 										<img  class ="second-image" src="{{asset('upload/hasp/'.@$image->photo)}}"  alt=" {{$hotProduct->name}}" />
 									</a>
 									<div class="actionss">
-										<div class="btn-cart-products">
-											<a href="javascript:void(0);" onclick="add_item_show_modalCart(1009814266)">
-												<i class="fa fa-shopping-bag" aria-hidden="true"></i>
+										<!-- <div class="btn-cart-products">
+											<a href="javascript:void(0);" id="" onclick="">
+												<i class="fa fa-shopping-bag addCart" aria-hidden="true"></i>
 											</a>
 										</div>
 										<div class="view-details">
 											<a href="{{url('san-pham/'.$hotProduct->alias.'.html')}}" class="view-detail" > 
 												<span><i class="fa fa-clone"> </i></span>
 											</a>
-										</div>
+										</div> -->
 										<!-- <div class="btn-quickview-products">
 											<a href="javascript:void(0);" class="quickview" data-handle="detail.html"><i class="fa fa-eye"></i></a>
 										</div> -->
@@ -108,16 +108,18 @@ $cateProducts = Cache::get('cateProducts');
 										<img  class ="second-image" src="{{asset('upload/hasp/'.$image->photo)}}"  alt=" {{$newProduct->name}} " />
 									</a>
 									<div class="actionss">
-										<div class="btn-cart-products">
-											<a href="javascript:void(0);" onclick="add_item_show_modalCart(1009814338)">
-												<i class="fa fa-shopping-bag" aria-hidden="true"></i>
+										<!-- <div class="btn-cart-products">
+											
+											<a href="javascript:void(0);">
+												<input type="hidden" name="product_id" class="product_id" value="{{ $newProduct->id }}">
+												<i class="fa fa-shopping-bag addCart" id="" aria-hidden="true"></i>
 											</a>
-										</div>
-										<div class="view-details">
+										</div> -->
+										<!-- <div class="view-details">
 											<a href="{{url('san-pham/'.$newProduct->alias.'.html')}}" class="view-detail" > 
 												<span><i class="fa fa-clone"> </i></span>
 											</a>
-										</div>
+										</div> -->
 										<!-- <div class="btn-quickview-products">
 											<a href="javascript:void(0);" class="quickview" data-handle="detail.html"><i class="fa fa-eye"></i></a>
 										</div> -->
@@ -173,4 +175,8 @@ $cateProducts = Cache::get('cateProducts');
 		</div>
 </div>
 </section>
+<script>
+    window.urlAddCart = '{{ route("ajaxAddProductToCart") }}';
+    window.token = '{{ csrf_token() }}';
+</script>
 @endsection

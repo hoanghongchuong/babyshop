@@ -1,6 +1,10 @@
 @extends('index')
 @section('content')
 
+<?php
+    $setting = Cache::get('setting');
+    $about = Cache::get('about');
+?>
 <div class="wrap-breadcrumb">
     <div class="clearfix container">
         <div class="row main-header">                           

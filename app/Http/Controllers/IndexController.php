@@ -39,10 +39,12 @@ class IndexController extends Controller {
     	$menu_top = DB::table('menu')->select()->where('com','menu-top')->where('status',1)->orderBy('stt','asc')->get();
     	$dichvu = DB::table('news')->select()->where('status',1)->where('com','dich-vu')->orderBy('stt','asc')->get();
     	$cateProducts = DB::table('product_categories')->where('parent_id',0)->get();
+    	$about = DB::table('about')->first();
     	Cache::forever('setting', $setting);
         Cache::forever('menu_top', $menu_top);
         Cache::forever('dichvu', $dichvu);
         Cache::forever('cateProducts', $cateProducts);
+        Cache::forever('about', $about);
         if(Auth::check())
         {
         	View::share('nguoidung',Auth::user());
@@ -62,7 +64,7 @@ class IndexController extends Controller {
 		$tintuc_moinhat = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->orderBy('created_at','desc')->take(4)->get();
 		$com='index';
 		$hot_news = DB::table('news')->where('status',1)->where('noibat',1)->orderBy('created_at','desc')->first();
-		// dd($hot_news);
+		$cate_pro = DB::table('product_categories')->where('status',1)->where('parent_id',0)->orderby('id','asc')->get();
 		$news_product = DB::table('products')->select()->where('status',1)->orderBy('id','desc')->take(8)->get();
 		$hot_product  = DB::table('products')->where('status',1)->where('noibat',1)->orderBy('created_at','desc')->take(8)->get();
 		$about = DB::table('about')->first();
@@ -77,7 +79,7 @@ class IndexController extends Controller {
 		// End cấu hình SEO
 		$img_share = asset('upload/hinhanh/'.$setting->photo);
 
-		return view('templates.index_tpl', compact('banner_danhmuc','com','khonggian_list','about','tintuc_moinhat','keyword','description','title','img_share','hot_news','news_product','hot_product','slider','banner_sidebar','cateHots','video'));
+		return view('templates.index_tpl', compact('banner_danhmuc','com','khonggian_list','about','tintuc_moinhat','keyword','description','title','img_share','hot_news','news_product','hot_product','slider','banner_sidebar','cateHots','video','cate_pro'));
 	}
 	public function getProduct()
 	{
@@ -543,17 +545,14 @@ class IndexController extends Controller {
 		if (!$product) {
 			die('product not found');
 		}
-		
 		Cart::add(array(
 				'id'=>$product->id,
 				'name'=>$product->name,
 				'qty'=>$data['product_numb'],
 				'price'=>$product->price,
 				'options'=>array('photo'=>$product->photo,'code'=>$product->code)));
-
 		return redirect(route('getCart'));
 	}
-
 	public function updateCart(Request $req){
 		$data = $req->numb;
 		// dd($data);
@@ -564,7 +563,6 @@ class IndexController extends Controller {
 		}		
 		return redirect(route('getCart'));
 	}
-
 	public function deleteCart($id){
         Cart::remove($id);
         return redirect('gio-hang');
@@ -711,8 +709,27 @@ class IndexController extends Controller {
     	return view('templates.cateproduct_tpl', compact('categoryDetail','cate_pro','products'));
     }
 
-     public function sortProduct(){
-    	
-    }
+    public function ajaxAddCart(Request $req)
+	{
+		// $data = $req->only('product_id');
+		dd($req->id);
+		try {
+			$product = DB::table('products')->select()->where('status',1)->where('id',$req->id)->get();
+			if (!$product) {
+				die('product not found');
+			}
+			Cart::add(array(
+					'id'=>$product->id,
+					'name'=>$product->name,
+					'qty'=>1,
+					'price'=>$product->price,
+					'options'=>array('photo'=>$product->photo,'code'=>$product->code)));
+			return 1;
+		} catch (\Exception $e) {
+			return 0;
+		}
+		
+		// return redirect(route('getCart'));
+	}
 
 }

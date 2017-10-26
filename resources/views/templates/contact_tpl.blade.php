@@ -2,7 +2,7 @@
 @section('content')
 <?php
     $setting = Cache::get('setting');
-    // $chinhanh = Cache::get('chinhanh');
+    $about = Cache::get('about');
 ?>
 <div class="wrap-breadcrumb">
     <div class="clearfix container">

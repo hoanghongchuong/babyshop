@@ -124,64 +124,23 @@
                             <span>Sản phẩm</span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
+                            <?php $cate_pro = DB::table('product_categories')->where('parent_id',0)->get(); ?>
+                            @foreach($cate_pro as $key=>$cate)
+                            <?php $cateChilds = DB::table('product_categories')->where('parent_id',$cate->id)->get(); ?>
                             <li>
-                                <a href="collectionsall.html" title="Đồ chơi trẻ em">Đồ chơi trẻ em</a>
+                                <a href="{{url('danh-muc/'.$cate->alias)}}" title="Đồ chơi trẻ em">{{$cate->name}}</a>
+                                @if( count($cateChilds) > 0)
                                 <ul class="dropdown-menu">
+                                    @foreach($cateChilds as $cateChild)
                                     <li>
-                                        <a href="collections5.html" title="Đồ chơi mô hình">Đồ chơi mô hình</a>
+                                        <a href="{{url('danh-muc/'.$cateChild->alias)}}" title="{{$cateChild->name}}">{{$cateChild->name}}</a>
                                     </li>
-                                    <li>
-                                        <a href="collections5.html" title="Đồ chơi hướng nghiệp">Đồ chơi hướng nghiệp</a>
-                                    </li>
-                                    <li>
-                                        <a href="collections5.html" title="Đồ chơi vận động">Đồ chơi vận động</a>
-                                    </li>
-                                    <li>
-                                        <a href="collections5.html" title="Đồ chơi cho bé gái">Đồ chơi cho bé gái</a>
-                                    </li>
+                                    @endforeach
                                 </ul>
+                                @endif
                             </li>
+                            @endforeach
                             
-                            <li>
-                                <a href="collectionsall.html" title="Đồ sơ sinh cần thiết">Đồ sơ sinh cần thiết</a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="collections5.html" title="Quần áo sơ sinh">Quần áo sơ sinh</a>
-                                    </li>
-                                    <li>
-                                        <a href="collections5.html" title="Bộ body cho bé sơ sinh">Bộ body cho bé sơ sinh</a>
-                                    </li>
-                                    <li>
-                                        <a href="collections5.html" title="Khăn cho bé sơ sinh">Khăn cho bé sơ sinh</a>
-                                    </li>
-                                    <li>
-                                        <a href="collections5.html" title="Chăn gối sơ sinh">Chăn gối sơ sinh</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="collectionsall.html" title="Thời trang trẻ em">Thời trang trẻ em</a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="collectionsall.html" title="Quần áo bé trai">Quần áo bé trai</a>
-                                    </li>
-                                    <li>
-                                        <a href="collectionsall.html" title="Quần áo váy bé gái">Quần áo váy bé gái</a>
-                                    </li>
-                                    <li>
-                                        <a href="collectionsall.html" title="Bộ body trẻ em">Bộ body trẻ em</a>
-                                    </li>
-                                    <li>
-                                        <a href="collectionsall.html" title="Phụ kiện thời trang">Phụ kiện thời trang</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="collectionsall.html" title="Cho bé đi chơi">Cho bé đi chơi</a>
-                            </li>
-                            <li>
-                                <a href="collectionsall.html" title="Bé khỏe & an toàn">Bé khỏe & an toàn</a>
-                            </li>
                         </ul>
                     </li>
                     <li class="@if(!empty($com) && $com=='tin-tuc') active @endif ">

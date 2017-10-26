@@ -48,6 +48,9 @@ Route::get('logout','LoginController@logout');
 // gio hang
 Route::get('gio-hang',['as'=>'getCart', 'uses'=>'IndexController@getCart']);
 Route::post('cart/add', ['as' => 'addProductToCart', 'uses' => 'IndexController@addCart']);
+
+Route::post('ajax/cart/add', ['as' => 'ajaxAddProductToCart', 'uses' => 'IndexController@ajaxAddCart']);
+
 Route::post('cart/update',['as' => 'updateCart', 'uses' => 'IndexController@updateCart']);
 // Route::get('updatecart/{id}/{qty}',['as'=>'updatecart','uses'=>'IndexController@updatecart']);
 Route::get('xoa-gio-hang/{id}','IndexController@deleteCart');

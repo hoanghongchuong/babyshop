@@ -74,17 +74,17 @@
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtAlias'); !!}</label>
 								      	@endif
 									</div>
-									<div class="form-group">
+									<!-- <div class="form-group">
 								      	<label for="alias">Ghi chú</label>
 								      	<textarea name="txtHuongdan" rows="5" id="txtContent" class="form-control"></textarea>
-									</div>
+									</div> -->
 								</div>
-								<div class="col-md-6">
+								<!-- <div class="col-md-6">
 									<div class="form-group">
 								      	<label for="alias">Khuyến mại</label>
 								      	<textarea name="txtQuatang" rows="5" id="txtContent" class="form-control"></textarea>
 									</div>
-								</div>
+								</div> -->
 							</div>
 							<div class="col-md-6 col-xs-12">
 
@@ -96,24 +96,23 @@
 							      	<label for="ten">Giá cũ</label>
 							      	<input type="text" name="txtPriceOld"  onkeyup="FormatNumber(this);"  onKeyPress="return isNumberKey(event)" value=""  class="form-control" />
 								</div>
-								<div class="form-group">
+								<!-- <div class="form-group">
 							      	<label for="ten">Mã SP</label>
 							      	<input type="text" name="txtCode"  value=""  class="form-control" />
-								</div>
+								</div> -->
 
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label for="">Thuộc tính</label>
 									<div id="a">
-									  <!-- <input id="Text1" type="text" class="form-control" /> -->
 									</div>
 									<input id="btnAdd"  class="add-properties" type="button" value="Add" />
 
-								</div>
+								</div> -->
 
-								<div class="form-group">
+								<!-- <div class="form-group">
 							      	<label for="desc">Mô tả</label>
 							      	<textarea name="txtDesc" rows="5" class="form-control"></textarea>
-								</div>
+								</div> -->
 								<!-- <div class="form-group">
 							      	<label for="alias">Bảo hành</label>
 							      	<input type="text" name="txtBaohanh" id="txtBaohanh" value=""  class="form-control" />
@@ -149,7 +148,7 @@
 							<div class="clearfix"></div>
 	                  	</div><!-- /.tab-pane -->
 	                  	<div class="tab-pane" id="tab_2">
-	                  		<div class="box box-info">
+	                  		<!-- <div class="box box-info">
 				                <div class="box-header">
 				                  	<h3 class="box-title">Mô tả chi tiết</h3>
 				                  	<div class="pull-right box-tools">
@@ -160,7 +159,7 @@
 				                <div class="box-body pad">
 				        			<textarea name="txtHuongdan" id="txtContent" cols="50" rows="5"></textarea>
 				        		</div>
-				        	</div>
+				        	</div> -->
 	                  		<div class="box box-info">
 				                <div class="box-header">
 				                  	<h3 class="box-title">Nội dung</h3>

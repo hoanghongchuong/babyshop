@@ -2,6 +2,7 @@
 @section('content')
 <?php
     $setting = Cache::get('setting');
+    $about = Cache::get('about');
 ?>
 
 <div class="wrap-breadcrumb">
@@ -122,31 +123,9 @@
                             </div>
                             <div class="col-md-12">
                                 <!-- Begin: Phân trang blog -->
-                                <div id="pagination" class="">
-                                    
-                                    <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs">
-                                        
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 text-center">
-                                        
-                                        
-                                        
-                                        <span class="page-node current">1</span>
-                                        
-                                        
-                                        
-                                        <a class="page-node" href="#">2</a>
-                                        
-                                        
-                                        
-                                        <a class="page-node" href="#">3</a>
-                                        
-                                        
-                                    </div>
-                                    <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs">
-                                        
-                                        <a class="pull-right next fa fa-angle-right" href="#"><span>Trang sau</span></a>
-                                        
+                                <div id="pagination" style="text-align: center;" class="">
+                                    <div class="paginations">
+                                        {{ $tintuc->links() }}
                                     </div>
                                     
                                 </div>

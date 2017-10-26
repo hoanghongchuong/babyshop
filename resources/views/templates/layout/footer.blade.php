@@ -1,6 +1,6 @@
 <?php
     $setting = Cache::get('setting');
-    $chinhanh = Cache::get('chinhanh');
+    $about = Cache::get('about');
 ?>
 <footer id="footer">
     <div class="footer-bottom">
@@ -10,16 +10,16 @@
                     <div class="widget-wrapper animated">
                         <h3 class="title title_left">Giới thiệu</h3>
                         <div class="inner about_us">
-                            <p class="message">Với hơn 100 nhân viên tư vấn trên mọi phương diện, không chỉ là hướng dẫn và xử lý các vấn đề từ Haravan, chúng tôi luôn mong cùng chia sẻ các kinh nghiệm giúp bạn bán được nhiều hàng hơn.</p>
+                            <p class="message">{!! $about->mota !!}</p>
                             <ul class="list-unstyled">
                                 <li>
-                                    <i class="fa fa-home"></i>56 Vân côi, Q. Tân Bình, Tp.HCM
+                                    <i class="fa fa-home"></i>{{$setting->address}}
                                 </li>
                                 <li>
-                                    <i class="fa fa-envelope-o"></i> <a href="mailto:support@gco.vn">support@gco.vn</a>
+                                    <i class="fa fa-envelope-o"></i> <a href="{{$setting->email}}">{{$setting->email}}</a>
                                 </li>
                                 <li>
-                                    <i class="fa fa-phone"></i><a href="tel:0123467964">0123.467.964</a>
+                                    <i class="fa fa-phone"></i><a href="tel:{{$setting->phone}}">{{$setting->phone}}</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-print"></i><a href="tel:0123467964">0123.467.964</a>

@@ -34,6 +34,7 @@
 
     <link href="{{asset('public/css/default_style.min.css')}}" rel='stylesheet' type='text/css'  media='all'  />
     <link rel="stylesheet" href="{{asset('public/css/bootstrap.3.3.1.css')}}">
+
     <link rel="stylesheet" href="{{asset('public/css/flexslider.css')}}">
     <link rel="stylesheet" href="{{asset('public/css/roboto.css')}}">
     <link href="{{asset('public/css/font-awesome.min.css')}}" rel='stylesheet' type='text/css'  media='all'  />
@@ -44,8 +45,10 @@
     <script src="{{asset('public/js/option_selection.js')}}" type='text/javascript'></script>
     <script src="{{asset('public/js/api.jquery.js')}}" type='text/javascript'></script>
     <script src="{{asset('public/js/default_script.min.js')}}" type='text/javascript'></script>
+    <script src="{{asset('public/js/haravan.plugin.1.0.js')}}"></script>
     <script src="{{asset('public/js/scripts.js')}}" type='text/javascript'></script>
     <script src="{{asset('public/js/myscript.js')}}" type='text/javascript'></script>
+    <script src="{{asset('public/js/jquery.elevatezoom.min.js')}}" type='text/javascript'></script>
     <script src="{{asset('public/js/custom.js')}}" type='text/javascript'></script>
 
 

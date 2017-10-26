@@ -1,5 +1,9 @@
 @extends('index')
 @section('content')
+<?php
+    $setting = Cache::get('setting');
+    $about = Cache::get('about');
+?>
 <div class="wrap-breadcrumb">
     <div class="clearfix container">
         <div class="row main-header">                           
@@ -74,7 +78,7 @@
                     <li class='item has-sub active first'>
                         <a href="{{url('danh-muc/'.$cate->alias)}}">
                             <span class="lbl">{{$cate->name}}</span>
-                             @if(count($cateChilds) > 0)
+                            @if(count($cateChilds) > 0)
                             <span data-toggle="collapse" data-parent="#cssmenu" href="#sub-item-{{$key}}" class="sign drop-down"></span>
                             @endif
                         </a>
@@ -173,8 +177,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                                
+                </div>              
                 <div class="col-md-12 col-sm-12 col-xs-12 content-product-list">
                     <div class="row product-list">
                         @foreach($products as $product)
@@ -186,7 +189,7 @@
                                         <img  class ="second-image" src="{{asset('upload/hasp/'.@$image->photo)}}"  alt="{{$product->name}}" />
                                     </a>
                                     <div class="actionss">
-                                        <div class="btn-cart-products">
+                                        <!-- <div class="btn-cart-products">
                                             <a href="javascript:void(0);" onclick="add_item_show_modalCart(1009814358)">
                                                 <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                                             </a>
@@ -195,10 +198,10 @@
                                             <a href="{{url('san-pham/'.$product->alias.'.html')}}" class="view-detail" > 
                                                 <span><i class="fa fa-clone"> </i></span>
                                             </a>
-                                        </div>
-                                        <div class="btn-quickview-products">
+                                        </div> -->
+                                        <!-- <div class="btn-quickview-products">
                                             <a href="javascript:void(0);" class="quickview" data-handle="detail.html"><i class="fa fa-eye"></i></a>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                                 <div class="product-detail clearfix">
@@ -213,7 +216,7 @@
                         </div> 
                         @endforeach                       
                     </div>
-                </xdiv>
+                </div>
                 <div class="col-md-12 col-sm-12 col-xs-12 ">
                     <div class="clearfix">
                         <div id="pagination" class="">

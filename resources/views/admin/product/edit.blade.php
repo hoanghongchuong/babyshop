@@ -70,11 +70,11 @@
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtAlias'); !!}</label>
 								      	@endif
 									</div>
-									<div class="form-group">
+									<!-- <div class="form-group">
 								      	<label for="alias">Ghi chú</label>
-								      	<!-- <input type="text" name="txtHuongdan" id="txtContent" value="{{ $data->huongdan }}"  class="form-control" /> -->
+								      	
 								      	<textarea name="txtHuongdan" rows="5" id="txtContent" class="form-control">{{ $data->huongdan }}</textarea>
-									</div>
+									</div> -->
 									
 								</div>
 								<div class="col-md-6 col-xs-12">
@@ -86,15 +86,15 @@
 								      	<label for="ten">Giá cũ</label>
 								      	<input type="text" name="txtPriceOld" onkeyup="FormatNumber(this);"  onKeyPress="return isNumberKey(event)" value="{{ number_format($data->price_old,0,'',',') }}"  class="form-control" />
 									</div>
-									<div class="form-group">
+									<!-- <div class="form-group">
 								      	<label for="ten">Mã SP</label>
 								      	<input type="text" name="txtCode"  value="{{ $data->code }}"  class="form-control" />
-									</div>
+									</div> -->
 									<!-- <div class="form-group">
 								      	<label for="alias">Bảo hành</label>
 								      	<input type="text" name="txtBaohanh" id="txtBaohanh" value="{{ $data->baohanh }}"  class="form-control" />
 									</div> -->
-									<div class="form-group">
+									<!-- <div class="form-group">
 										<label for="">Thuộc tính</label>
 										<?php $properties = explode('###', $data->properties) ?>
 										@for($i=0; $i< count($properties); $i++)
@@ -107,7 +107,7 @@
 										@endfor
 										<input id="btnAdd"  class="add-properties" type="button" value="Add" />
 
-									</div>
+									</div> -->
 									<!-- <div class="form-group">
 								      	<label for="ten">Giảm giá</label>
 								      	<input type="text" name="txtSale"  value="{{ $data->sale }}"  class="form-control" />
@@ -166,7 +166,7 @@
 				        	</div>
 	                  		<div class="box box-info">
 				                <div class="box-header">
-				                  	<h3 class="box-title">Nội dung</h3>
+				                  	<h3 class="box-title">Nội dung mô tả</h3>
 				                  	<div class="pull-right box-tools">
 					                    <button class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
 					                    <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>

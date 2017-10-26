@@ -1,5 +1,9 @@
 @extends('index')
 @section('content')
+<?php
+    $setting = Cache::get('setting');
+    $about = Cache::get('about');
+?>
 <div class="wrap-breadcrumb">
     <div class="clearfix container">
         <div class="row main-header">                           
@@ -28,7 +32,6 @@
         
         <div class="filter-by-wrapper">
             <div class="filter-by" >
-                
                 <div class="sort-filter-option navbar-inactive" id="navbar-inner">
                     <div class="filterBtn txtLeft btn-navbar-collection">
                         <span class="list-coll">
@@ -103,48 +106,7 @@
                     </a>
                 </div>
         </div>
-        <script>
-        $(document).ready(function(){
-            //$('ul li:has(ul)').addClass('hassub');
-            $('#cssmenu ul ul li:odd').addClass('odd');
-            $('#cssmenu ul ul li:even').addClass('even');
-            $('#cssmenu > ul > li > a').click(function() {
-                $('#cssmenu li').removeClass('active');
-                $(this).closest('li').addClass('active');
-                var checkElement = $(this).nextS();
-                if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
-                    $(this).closest('li').removeClass('active');
-                    checkElement.slideUp('normal');
-                }
-                if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
-                    $('#cssmenu ul ul:visible').slideUp('normal');
-                    checkElement.slideDown('normal');
-                }
-                if($(this).closest('li').find('ul').children().length == 0) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
-
-            $('.drop-down').click(function(e){      
-                if ( $(this).parents('li').hasClass('has-sub') ){
-                    e.preventDefault();
-                    if($(this).hasClass('open-nav')){
-                        $(this).removeClass('open-nav');
-                        $(this).parents('li').children('ul.lve2').slideUp('normal').removeClass('in');
-                    }else {
-                        $(this).addClass('open-nav');
-                        $(this).parents('li').children('ul.lve2').slideDown('normal').addClass('in');
-                    }
-                }else {
-
-                }
-            });
-
-        });
-        $("#list-group-l ul.navs li.active").parents('ul.children').addClass("in");
-        </script>
+        
     </div>
     <div class="content-col col-md-9 col-sm-12 col-xs-12" data-sticky_column>
         <div class="row">
@@ -190,8 +152,8 @@
                                             <img  class ="second-image" src="{{asset('upload/hasp/'.@$image->photo)}}"  alt="{{$product->name}}" />
                                         </a>
                                         <div class="actionss">
-                                            <div class="btn-cart-products">
-                                                <a href="javascript:void(0);" onclick="add_item_show_modalCart(1009814358)">
+                                            <!-- <div class="btn-cart-products">
+                                                <a href="javascript:void(0);" onclick="">
                                                     <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -199,10 +161,10 @@
                                                 <a href="{{url('san-pham/'.$product->alias.'.html')}}" class="view-detail" > 
                                                     <span><i class="fa fa-clone"> </i></span>
                                                 </a>
-                                            </div>
-                                            <div class="btn-quickview-products">
+                                            </div> -->
+                                            <!-- <div class="btn-quickview-products">
                                                 <a href="javascript:void(0);" class="quickview" data-handle="detail.html"><i class="fa fa-eye"></i></a>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="product-detail clearfix">
@@ -229,7 +191,7 @@
     
     <!-- End no products -->
 </div>
-<script>
+<!-- <script>
 Haravan.queryParams = {};
 if (location.search.length) {
     for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
@@ -270,5 +232,5 @@ collFilters.change(function() {
         </script>
 
      </div>
-</section>
+</section> -->
 @endsection
