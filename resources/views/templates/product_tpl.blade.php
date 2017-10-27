@@ -44,7 +44,7 @@
                 
                 
                 <div class="sort-filter-option js-promoteTooltip" >
-                    <div class="filterBtn txtLeft showOverlay" >
+                    <!-- <div class="filterBtn txtLeft showOverlay" >
                         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
                         <span  class="custom-dropdown custom-dropdown--white">
                             <select class="sort-by custom-dropdown__select custom-dropdown__select--white">
@@ -57,7 +57,7 @@
                                 <option value="best-selling">Bán chạy nhất</option>
                             </select>
                         </span>
-                    </div>
+                    </div> -->
                 </div>
                         
             </div>
@@ -178,7 +178,7 @@
                 </div>              
                 <div class="col-md-12 col-sm-12 col-xs-12 content-product-list">
                     <div class="row product-list">
-                        @foreach($products as $product)
+                        @foreach($products as $key=>$product)
                         <div class="col-md-4  col-sm-6 col-xs-12 pro-loop">
                             <div class="product-block product-resize">
                                 <div class="product-img image-resize view view-third">
@@ -191,15 +191,15 @@
                                             <a href="javascript:void(0);" onclick="add_item_show_modalCart(1009814358)">
                                                 <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                                             </a>
-                                        </div>
+                                        </div> -->
                                         <div class="view-details">
                                             <a href="{{url('san-pham/'.$product->alias.'.html')}}" class="view-detail" > 
                                                 <span><i class="fa fa-clone"> </i></span>
                                             </a>
-                                        </div> -->
-                                        <!-- <div class="btn-quickview-products">
-                                            <a href="javascript:void(0);" class="quickview" data-handle="detail.html"><i class="fa fa-eye"></i></a>
-                                        </div> -->
+                                        </div>
+                                        <div class="btn-quickview-products">
+                                            <a href="#item{{$key}}" data-toggle="modal" data-target="#item{{$key}}" data-handle="detail.html"><i class="fa fa-eye"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="product-detail clearfix">
@@ -212,7 +212,86 @@
                                 </div>
                             </div>  
                         </div> 
-                        @endforeach                       
+                        @endforeach    
+
+                        <div class="vk-shop-modal__list">
+                            @foreach($products as $key=>$p)
+                            <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="item{{$key}}">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header clearfix" style="width:100%">
+                                            <a href="{{url('san-pham/'.$p->alias.'.html')}}" class="quickview-title text-left" title="{{$p->name}}"><h4 class="p-title modal-title">{{$p->name}}</h4></a>
+                                            <div class="quickview-close">
+                                                <!-- <a href="javascript:void(0);"><i class="fa fa-times"></i></a> -->
+                                                 <button type="button" class="close vk-btn vk-btn--close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="vk-shop-detail vk-shop-detail--quickview">
+                                            <div class="">
+                                                <div class="row">
+                                                    <div class="vk-shop-detail__left col-lg-6">
+                                                        <div class="vk-shop-detail__thumbnail-wrapper">
+                                                            <div class="vk-shop-detail__thumbnail">
+                                                            <?php $product_detail = DB::table('products')->select()->where('status',1)->where('alias',$p->alias)->get()->first();
+                                                                $album_hinh = DB::table('images')->select()
+                                                                ->where('product_id',$product_detail->id)
+                                                                ->orderby('id','asc')->get();
+                                                            ?>
+                                                                <!-- <div class="vk-slider__for carousel" data-slider="slider-for">
+                                                                 @foreach($album_hinh as $album)
+                                                                    <div class="vk-img vk-img--mw100">
+                                                                        <img src="{{asset('upload/hasp/'.$album->photo)}}" alt="">
+                                                                    </div>
+                                                                 @endforeach       
+                                                                </div> -->
+                                                                 <img src="{{asset('upload/product/'.$p->photo)}}" class="img-responsive" alt="">
+                                                            </div> 
+                                                            <!-- <div class="vk-shop-detail__thumbnail-list vk-slider" >
+
+                                                                <div class="vk-slider__nav carousel" data-slider="slider-nav">
+                                                                @foreach($album_hinh as $album)
+                                                                    <div class="vk-img vk-img--mw100">
+                                                                        <img src="{{asset('upload/hasp/'.$album->photo)}}" alt="">
+                                                                    </div>
+                                                                 @endforeach
+                                                                </div>
+                                                            </div> --> 
+                                                        </div> 
+                                                    </div> 
+                                                    <div class="vk-shop-detail__right col-lg-6">
+                                                        <div class="vk-shop-detail__brief">
+                                                            <div class="vk-shop-detail__box">
+                                                                <p class="product-price vk-text--red-1"><span>{{number_format($p->price)}}</span> ₫ </p>
+                                                                <div class="quickview-description">Mô tả tóm tắt:</div>
+                                                                <div class="vk-button">
+                                                                    <form action="{{ route('addProductToCart') }}" method="post">
+                                                                        {!! csrf_field() !!}
+                                                                        <input type="hidden" name="product_id" value="{{ $product_detail->id }}">
+                                                                        <div class="form-input ">
+                                                                            <label>Số lượng</label>
+                                                                            <input id="quantity-quickview" name="product_numb" type="number" min="1" value="1">
+                                                                        </div>
+                                                                        <!-- <button type="submit" style="margin-top: 4px;" class="vk-btn vk-btn--now text-uppercase _inverse">Mua ngay</button> -->
+                                                                        <button type="submit" class="btn-detail  btn-color-add btn-min-width btn-mgt btn-addcart" style="display: block;">Thêm vào giỏ</button>
+                                                                    </form>
+                                                                   
+                                                                    <div class="qv-readmore">
+                                                                        <span> hoặc </span><a class="read-more p-url" href="{{url('san-pham/'.$p->alias.'.html')}}" role="button">Xem chi tiết</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div> <!--./vk-shop-detail__box-->
+                                                        </div> <!--./vk-shop-detail__brief-->
+                                                    </div><!-- /.vk-shop-detail__right -->
+                                                </div>
+                                            </div>
+                                            <!-- /.container -->
+                                        </div> <!--./vk-shop-detail-->
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            
+                        </div>                    
                     </div>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12 ">
@@ -222,26 +301,6 @@
                                 {{ $products->links() }}
                             </div>
                         
-                            <!-- <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs">
-                                    
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 text-center">
-                                
-                                
-                                
-                                <span class="page-node current">1</span>
-                                
-                                
-                                
-                                <a class="page-node" href="#">2</a>
-                                
-                                
-                                
-                                <a class="page-node" href="#">3</a>  
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs"> 
-                                <a class="pull-right next fa fa-angle-right" href="#"><span>Trang sau</span></a> 
-                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -255,8 +314,7 @@
     
     <!-- End no products -->
 </div>
-
-
 </div>
+
 </section>
 @endsection

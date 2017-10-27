@@ -1310,6 +1310,7 @@ aside.banner-home-1 {
 .modal-title{
 	color:#ffffff;
 	text-transform: uppercase;
+	padding-left: 30px;
 }
 .modal-title span {
 	font-size : 14px;
@@ -2253,7 +2254,7 @@ em { font-style: italic; }
 #cart .extra-checkout-buttons input { border: none; box-shadow: none; height: 42px; }
 #cart .qty { text-align: center; }
 #cart .price, #cart .remove { text-align: right; }
-#checkout { float: right; margin-left: 15px; margin-bottom:15px;}
+#checkout { float: right; margin-left: 15px; margin-bottom:15px; text-align: center;}
 #update-cart { float: right; }
 #cart .image { text-align: center; }
 #cart .image a, #cart .image img { margin: 0; border: none;max-height:100px }
@@ -3600,4 +3601,25 @@ position: relative;
 }
 .paginations{
 	text-align: center;
+}
+.vk-shop-modal__list .form-input input[type=number] {
+    max-width: 60px;
+    text-align: center;
+    padding: 6px;
+    border-radius: 0px;
+    border: 1px solid #ebebeb;
+    outline: none;
+    color: #737373;
+}
+.modal{
+	/* display: block;
+	height: 0 */
+}
+.modal.show {
+    height: auto;
+}
+.vk-img--mw100 img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
 }

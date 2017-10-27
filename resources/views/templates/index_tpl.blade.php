@@ -73,10 +73,8 @@ $banner = DB::table('banner_content')->where('position',1)->get();
 						</div>
 					</div>
 				</div>
-									<!--Product loop-->
-
+				<!--Product loop-->
 				<div class="row">
-					
 				</div>
 				<div class="product-list clearfix ">
 					<div class="row">

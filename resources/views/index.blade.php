@@ -45,9 +45,11 @@
     <script src="{{asset('public/js/option_selection.js')}}" type='text/javascript'></script>
     <script src="{{asset('public/js/api.jquery.js')}}" type='text/javascript'></script>
     <script src="{{asset('public/js/default_script.min.js')}}" type='text/javascript'></script>
+     <link href="{{asset('public/slick/slick.css')}}" rel="stylesheet" />
     <script src="{{asset('public/js/haravan.plugin.1.0.js')}}"></script>
     <script src="{{asset('public/js/scripts.js')}}" type='text/javascript'></script>
     <script src="{{asset('public/js/myscript.js')}}" type='text/javascript'></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" type='text/javascript'></script>
     <script src="{{asset('public/js/jquery.elevatezoom.min.js')}}" type='text/javascript'></script>
     <script src="{{asset('public/js/custom.js')}}" type='text/javascript'></script>
 

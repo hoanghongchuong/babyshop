@@ -73,7 +73,7 @@
                         <div id="widget-social" class="social-icons">
                             <ul class="list-inline">
                                 <li>
-                                  <a target="_blank" href="#" class="social-wrapper facebook">
+                                  <a target="_blank" href="{{$setting->facebook}}" class="social-wrapper facebook">
                                     <span class="social-icon">
                                       <i class="fa fa-facebook"></i>
                                     </span>
@@ -81,7 +81,7 @@
                                 </li>
                                 
                                 <li>
-                                  <a target="_blank" href="#" class="social-wrapper twitter">
+                                  <a target="_blank" href="{{$setting->twitter}}" class="social-wrapper twitter">
                                     <span class="social-icon">
                                       <i class="fa fa-twitter"></i>
                                     </span>
@@ -95,14 +95,14 @@
                                   </a>
                                 </li>
                                 <li>
-                                  <a target="_blank" href="#" class="social-wrapper google">
+                                  <a target="_blank" href="{{$setting->google}}" class="social-wrapper google">
                                     <span class="social-icon">
                                       <i class="fa fa-google-plus"></i>
                                     </span>
                                   </a>
                                 </li>
                                 <li>
-                                  <a target="_blank" href="#" class="social-wrapper youtube">
+                                  <a target="_blank" href="{{$setting->youtube}}" class="social-wrapper youtube">
                                     <span class="social-icon">
                                       <i class="fa fa-youtube"></i>
                                     </span>

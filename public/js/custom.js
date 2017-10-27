@@ -35,4 +35,51 @@ jQuery(document).ready(function($) {
         window.location.href = queryObject.origin.replace(/.$/,"");
     }
 
+     $('[data-slider="slider-for"]').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            nextArrow:'<button class="vk-btn vk-slider__arrow _next"><img src="images/icon/right.png" alt=""></button>',
+            prevArrow:'<button class="vk-btn vk-slider__arrow _prev"><img src="images/icon/left.png" alt=""></button>',
+            fade: true,
+            infinite:false,
+            asNavFor: '[data-slider="slider-nav"]',
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                    arrows: false,
+
+                }
+
+            }]
+        });
+        $('[data-slider="slider-nav"]').slick({
+            arrows: false,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            asNavFor: '[data-slider="slider-for"]',
+            focusOnSelect: true,
+            infinite:false,
+            swipeToSlide:true,
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 3,
+
+                }
+
+            }]
+
+        });
+        
+ $('.modal').on('shown.bs.modal', function (e) {
+            $('.carousel').resize();
+          })
+         
+
 });
+
+// $(document).resize(function(){
+//     $('.modal').on('shown.bs.modal', function (e) {
+//             $('.carousel').resize();
+//           })
+// })

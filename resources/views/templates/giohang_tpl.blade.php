@@ -89,8 +89,8 @@
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12 cart-buttons inner-right inner-left">
                                 <div class="buttons clearfix">
-                                    <button type="button" id="checkout" class="button-default" name="checkout" value="" ><a href="{{url('thanh-toan')}}" title="">Thanh toán</a></button>
-                                    
+                                    <!-- <button type="button" id="checkout" class="button-default" name="checkout" value="" ></button> -->
+                                    <a href="{{url('thanh-toan')}}" id="checkout" class="button-default" title="">Gửi đơn hàng</a>
                                     <button type="submit" id="update-cart" class="button-default" name="update"  value="" >Cập nhật</button>
                                 </div>
                             </div>

@@ -245,7 +245,7 @@ class ProductController extends Controller
             $product->quatang = $request->txtQuatang;
             $product->model = $request->txtModel;
             $product->code = $request->txtCode;
-            $product->properties = implode('###',$request->properties);
+            // $product->properties = implode('###',$request->properties);
             $product->mota = $request->txtDesc;
             $product->title = $request->txtTitle;
             $product->content = $request->txtContent;
