@@ -186,7 +186,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request)
+    public function update(ProductRequest $request)
     {
         $this->validate($request,
             ["txtName" => "required"],

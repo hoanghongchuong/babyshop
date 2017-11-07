@@ -60,7 +60,9 @@ $banner = DB::table('banner_content')->where('position',1)->get();
 									<h3 class="pro-name"><a href="{{url('san-pham/'.$hotProduct->alias.'.html')}}" title="{{$hotProduct->name}}">{{$hotProduct->name}} </a></h3>
 									<div class="pro-prices">	
 										<p class="pro-price">{{number_format($hotProduct->price)}} ₫</p>
-										<p class="pro-price-del text-left"></p>	
+										@if($hotProduct->price_old > $hotProduct->price)						
+										<p class="pro-price-del text-left">{{number_format($hotProduct->price_old)}}</p>
+										@endif
 									</div>
 								</div>
 							</div>	
@@ -116,7 +118,7 @@ $banner = DB::table('banner_content')->where('position',1)->get();
 
 								<div class="product-detail clearfix">
 									<!-- sử dụng pull-left -->
-									<h3 class="pro-name"><a href="detail.html" title="{{$newProduct->name}}">{{$newProduct->name}} </a></h3>
+									<h3 class="pro-name"><a href="{{url('san-pham/'.$newProduct->alias.'.html')}}" title="{{$newProduct->name}}">{{$newProduct->name}} </a></h3>
 									<div class="pro-prices">	
 										<p class="pro-price">{{number_format($newProduct->price)}} đ</p>
 										@if($newProduct->price_old > $newProduct->price)						

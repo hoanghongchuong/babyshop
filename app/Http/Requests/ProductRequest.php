@@ -24,7 +24,7 @@ class ProductRequest extends Request {
 		return [
 			'txtName' => 'required|unique:products,name',
             'txtAlias' => 'required',
-            'fImages' => 'image|max:100000'
+            'fImages' => 'image|max:200000'
 		];
 	}
 	public function messages()
